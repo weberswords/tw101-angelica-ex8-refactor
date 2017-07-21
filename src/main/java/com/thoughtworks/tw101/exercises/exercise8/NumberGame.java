@@ -18,16 +18,11 @@ public class NumberGame {
 
     public void play() {
         while(!state.gameOver()) {
-            // Ask user for guess
             int guess = requestGuess();
             if (guess == -1) {
                 continue;
             }
-
-            // Update game state
             state.update(guess);
-
-            // Print state of game
             state.printGameState();
         }
     }
@@ -42,16 +37,21 @@ public class NumberGame {
         String userInput = "";
         int guess = -1;
         try {
-            try {
-                userInput = br.readLine();
-            } catch (IOException e) {
-                System.out.println("User input error.");
-            }
+            userInput = checkInput(br, userInput);
             guess = Integer.parseInt(userInput);
         } catch (NumberFormatException nfe) {
             System.out.println("Invalid integer format!");
         }
         return guess;
+    }
+
+    private String checkInput(BufferedReader br, String userInput) {
+        try {
+            userInput = br.readLine();
+        } catch (IOException e) {
+            System.out.println("User input error.");
+        }
+        return userInput;
     }
 
 }

@@ -26,7 +26,11 @@ public class NumberGameState {
             gameOver = true;
         } else if (guess <  lowerBound || guess > upperBound) {
             System.out.printf("Your guess is out of bounds.");
-        } else if (guess > number) {
+        } else assessGuess(guess);
+    }
+
+    private void assessGuess(int guess) {
+        if (guess > number) {
             System.out.println("Lower!");
             upperBound = guess-1;
         } else {

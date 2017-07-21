@@ -43,12 +43,16 @@ public class NumberGameState {
     public void printGameState() {
         if (gameOver) {
             System.out.printf("You guessed it! The number is %d.\n", number);
-            System.out.println("Here are your guesses: ");
-            for (Integer guess: guesses) {
-                System.out.printf("%d ", guess);
-            }
+            printGuesses(guesses);
         } else{
             System.out.printf("Guess a number between %d and %d.\n", lowerBound, upperBound);
+        }
+    }
+
+    private static void printGuesses(ArrayList<Integer> guesses) {
+        System.out.println("Here are your guesses: ");
+        for (Integer guess: guesses) {
+            System.out.printf("%d ", guess);
         }
     }
 

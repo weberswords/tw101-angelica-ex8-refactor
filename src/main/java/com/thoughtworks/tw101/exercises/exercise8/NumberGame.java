@@ -36,6 +36,11 @@ public class NumberGame {
         System.out.print("Enter a guess: ");
         String userInput = "";
         int guess = -1;
+        guess = validateGuessAsInt(br, userInput, guess);
+        return guess;
+    }
+
+    private int validateGuessAsInt(BufferedReader br, String userInput, int guess) {
         try {
             userInput = checkInput(br, userInput);
             guess = Integer.parseInt(userInput);
